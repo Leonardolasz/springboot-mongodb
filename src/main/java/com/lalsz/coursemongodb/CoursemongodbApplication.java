@@ -9,5 +9,4 @@ public class CoursemongodbApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CoursemongodbApplication.class, args);
 	}
-
 }
