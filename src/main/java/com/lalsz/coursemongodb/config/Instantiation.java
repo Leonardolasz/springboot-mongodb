@@ -2,6 +2,7 @@ package com.lalsz.coursemongodb.config;
 
 import com.lalsz.coursemongodb.domain.Post;
 import com.lalsz.coursemongodb.domain.User;
+import com.lalsz.coursemongodb.dto.AuthorDTO;
 import com.lalsz.coursemongodb.repository.PostRepository;
 import com.lalsz.coursemongodb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,11 @@ public class Instantiation implements CommandLineRunner {
         User maye = new User(null, "Drake Maye", "maye@email.com");
         User daniels = new User(null, "Jayden daniels", "daniels@email.com");
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu Broncos", "Vou jogar nos Broncos", caleb);
-        Post post2 = new Post(null, sdf.parse("22/03/2018"), "Partiu Commanders", "Vou jogar nos Commanders", maye);
-
         userRepository.saveAll(Arrays.asList(caleb, maye, daniels));
+
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu Broncos", "Vou jogar nos Broncos", new AuthorDTO(caleb));
+        Post post2 = new Post(null, sdf.parse("22/03/2018"), "Partiu Commanders", "Vou jogar nos Commanders", new AuthorDTO(maye));
+
         postRepository.saveAll(Arrays.asList(post1, post2));
     }
 }
